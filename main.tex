@@ -9,9 +9,14 @@
 \usepackage{array}
 \usepackage{titlesec}
 \usepackage{xcolor}
-\usepackage{fontawesome5}
 \definecolor{linkColor}{RGB}{0,70,140}
 \usepackage[colorlinks=true,urlcolor=linkColor]{hyperref}
+\hypersetup{
+    pdftitle={Nguyen Hai Dang - Resume},
+    pdfauthor={Nguyen Hai Dang},
+    pdfsubject={Resume},
+    pdfkeywords={Backend Developer, NestJS, TypeScript, Node.js, PostgreSQL, Microservices}
+}
 
 % Produce a machine-readable PDF for applicant tracking systems.
 \input{glyphtounicode}
@@ -22,12 +27,16 @@
 \setlength{\parskip}{0pt}
 \setlength{\tabcolsep}{0pt}
 \setcounter{secnumdepth}{0}
+% No hyphenation: split words break ATS keyword matching.
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\sloppy
 
 \titleformat{\section}
     {\large\bfseries\uppercase}
     {}{0pt}{}
     [\vspace{0.05em}\titlerule]
-\titlespacing*{\section}{0pt}{0.7em}{0.35em}
+\titlespacing*{\section}{0pt}{0.55em}{0.3em}
 
 \newenvironment{resumeitems}{
     \begin{itemize}[
@@ -57,13 +66,13 @@
 
 \newcommand{\projectentry}[3]{%
     \begin{tabularx}{\textwidth}{@{}X>{\raggedleft\arraybackslash}p{0.28\textwidth}@{}}
-        {\large\bfseries #1} & #2 \\
-        \multicolumn{2}{@{}l@{}}{\textit{#3}}
-    \end{tabularx}%
+        \textbf{#1} & #2
+    \end{tabularx}\par
+    {\raggedright\textit{#3}\par}%
 }
 
-\newcommand{\projectstack}[1]{%
-    {\newline\normalsize\normalfont #1}%
+\newcommand{\techstack}[1]{%
+    \par\textbf{Tech Stack:} #1\par
 }
 
 \newcommand{\resumelink}[2]{%
@@ -80,14 +89,16 @@
 
 \begin{center}
     {{\fontencoding{T5}\fontfamily{qtm}\selectfont\LARGE\bfseries Nguyễn Hải Đăng}}\\[0.25em]
-    \resumelink{https://www.linkedin.com/in/nhdang2004/}{\faLinkedin\ linkedin.com/in/nhdang2004}
-\small
-    \enspace$\vert$\enspace
-    \resumelink{tel:+84369215948}{\faPhone\ 0369 215 948}
-    \enspace$\vert$\enspace
-    \resumelink{mailto:haidangbachkhoa@gmail.com}{\faEnvelope\ haidangbachkhoa@gmail.com}
-    \enspace$\vert$\enspace
-    \resumelink{https://github.com/downgear}{\faGithub\ github.com/downgear}
+    {\small
+    Ho Chi Minh City, Vietnam
+    \enspace|\enspace
+    \resumelink{tel:+84369215948}{+84 369 215 948}
+    \enspace|\enspace
+    \resumelink{mailto:haidangbachkhoa@gmail.com}{haidangbachkhoa@gmail.com}
+    \enspace|\enspace
+    \resumelink{https://www.linkedin.com/in/nhdang2004/}{linkedin.com/in/nhdang2004}
+    \enspace|\enspace
+    \resumelink{https://github.com/downgear}{github.com/downgear}}
 \end{center}
 
 \section{Education}
@@ -96,27 +107,24 @@
     {Ho Chi Minh University of Technology -- {\fontencoding{T5}\fontfamily{qtm}\selectfont Trường Đại học Bách khoa ĐHQG HCM}}
     {Ho Chi Minh City, Vietnam}
     {Bachelor in Computer Science, Advanced Software Engineering; GPA: 3.5/4.0}
-    {2022--2026}
+    {2022 -- 2026}
 
 \section{Technical Skills}
 
-\textbf{Languages:} TypeScript, JavaScript, Python, SQL \quad
-\textbf{Frameworks:} NestJS, Express.js, React, Node.js\\[-0.1em]
-\textbf{Data:} PostgreSQL, MongoDB, Prisma, TypeORM, Mongoose, Redis, MinIO/S3 \quad
-\textbf{Tools:} Git, Docker, Postman, Nx, pnpm, RabbitMQ, BullMQ, Envoy, GitHub Actions
-
-\section{Certifications}
-
-\textbf{TOEIC Listening and Reading:} 990/990\\
-\textbf{Axon Active:} Certificate in Software Development with Scrum Training
+\textbf{Languages:} TypeScript, JavaScript, Python, SQL\\
+\textbf{Backend:} Node.js, NestJS, Express.js, REST APIs, gRPC, Socket.IO, Server-Sent Events (SSE), Microservices\\
+\textbf{Frontend:} React, Redux Toolkit, Tailwind CSS, Vite\\
+\textbf{Databases and Storage:} PostgreSQL, MongoDB, Redis, Prisma, TypeORM, Mongoose, MinIO/S3\\
+\textbf{Messaging and DevOps:} RabbitMQ, BullMQ, Docker, Envoy, GitHub Actions, Git, Nx, pnpm, Postman
 
 \section{Experience}
 
 \experienceentry
-    {Doczy / Alobo\projectstack{Backend: NestJS | Tech: MongoDB (Mongoose), Redis, BullMQ, SSE}}
-    {Ho Chi Minh City, Vietnam}
     {Backend Developer Intern}
-    {June 2025--August 2025}
+    {June 2025 -- August 2025}
+    {Doczy / Alobo}
+    {Ho Chi Minh City, Vietnam}
+\techstack{NestJS, MongoDB, Mongoose, Redis, BullMQ, Server-Sent Events (SSE)}
 \begin{resumeitems}
     \item Built mobile-facing REST APIs for account, post, comment, reaction, connection, group, and notification features for a sports community platform using a modular monolith and layered MVC architecture.
     \item Implemented real-time notifications using Server-Sent Events (SSE) for live user updates.
@@ -127,9 +135,13 @@
 \section{Projects}
 
 \projectentry
-    {AI-Assisted English-Learning Platform\projectstack{Backend: NestJS | Tech: PostgreSQL (Prisma), Redis, RabbitMQ, BullMQ, MinIO, Envoy, Socket.IO}}
-    {October 2025--May 2026}
-    {Lead Backend Developer; team of 4 \enspace$\vert$\enspace \resumelink{https://github.com/HDkit/meowlish}{GitHub Repository}}
+    {AI-Assisted English-Learning Platform}
+    {October 2025 -- May 2026}
+    {Lead Backend Developer, team of 4 \enspace|\enspace
+    Backend: \resumelink{https://github.com/HDkit/meowlish}{github.com/HDkit/meowlish}
+    \enspace|\enspace
+    Frontend: \resumelink{https://github.com/HDkit/meowlish-fe}{github.com/HDkit/meowlish-fe}}
+\techstack{NestJS, PostgreSQL, Prisma, Redis, RabbitMQ, BullMQ, gRPC, MinIO, Envoy, Socket.IO, React, Tailwind CSS}
 
 \begin{resumeitems}
     \item Led backend development for NestJS microservices in an Nx/pnpm monorepo, applying lightweight domain-driven design, CQRS, and event-driven architecture.
@@ -137,17 +149,19 @@
     \item Developed email and Google OAuth authentication, refresh tokens, account lockout, RS256 JWT signing, gateway verification, RBAC, ownership checks, and immediate Redis-backed token revocation.
     \item Built RabbitMQ workflows for notifications, achievements, chat, and file processing; delivered real-time updates through SSE and horizontally scalable Socket.IO chat using Redis pub/sub.
     \item Designed PostgreSQL and Prisma models using optimistic locking, closure tables, and nested sets; added full-text search, automatic transaction management, presigned MinIO uploads, and BullMQ cleanup workers.
-    \item Served learners and administrators with dashboards, exam creation and AI-assisted scoring, study goals, achievement tracking, blogs, and flashcards.
+    \item Delivered dashboards, exam creation with AI-assisted scoring, study goals, achievements, blogs, and flashcards for learners and admins.
 \end{resumeitems}
 
 \projectseparator
 
 \projectentry
-    {BKMarket E-Commerce Platform\projectstack{Backend: Express.js \enspace$\vert$\enspace Frontend: React | Tech: MongoDB (Mongoose), VNPay}}
-    {October 2024--January 2025}
-    {Project Lead and Full-Stack Developer; team of 4 \enspace$\vert$\enspace
-    \resumelink{https://github.com/HCMUT-Archived/BKMarket-BE}{Backend Repository} \enspace$\vert$\enspace
-    \resumelink{https://github.com/HCMUT-Archived/BKMarket-FE}{Frontend Repository}}
+    {BKMarket E-Commerce Platform}
+    {October 2024 -- January 2025}
+    {Project Lead and Full-Stack Developer, team of 4 \enspace|\enspace
+    Backend: \resumelink{https://github.com/HCMUT-Archived/BKMarket-BE}{github.com/HCMUT-Archived/BKMarket-BE}
+    \enspace|\enspace
+    Frontend: \resumelink{https://github.com/HCMUT-Archived/BKMarket-FE}{github.com/HCMUT-Archived/BKMarket-FE}}
+\techstack{Express.js, Node.js, React, MongoDB, Mongoose, VNPay}
 
 \begin{resumeitems}
     \item Led development of a full-stack marketplace for HCMUT students, connecting buyers and sellers with shopping carts, VNPay payments, administrative dashboards for transaction monitoring, and role-based access.
@@ -155,10 +169,16 @@
     \item Built frontend pages with React and integrated third-party APIs across frontend and backend workflows using a modular, layered MVC architecture.
 \end{resumeitems}
 
-\section{Minor Projects}
+\section{Additional Projects}
 
-\textbf{Smart Watering IoT System} | \resumelink{https://github.com/HCMUT-Archived/IoIoT-BE}{GitHub} | NestJS, PostgreSQL, OhSTEM | Real-time sensors monitoring using MQTT and configurable settings for a smart watering system.\\[0.15em]
-\textbf{Whack-a-Mole Game Engine Demo} | \resumelink{https://github.com/HCMUT-Archived/Hammer-vs.-Zombies}{GitHub} | Python 3, Pygame | Object-oriented, component-based architecture engine with scenes management, global event system and customizable UI components system.\\[0.15em]
-\textbf{HCMUT Remote Printing Service} | \resumelink{https://github.com/HCMUT-Archived/SSPS-BE}{GitHub} | Express.js, MongoDB, JWT, VNPay | Remote printing for students and officers, with document and printer management, print history, and online payments.
+\begin{resumeitems}
+    \item \textbf{Smart Watering IoT System} (NestJS, PostgreSQL, MQTT, OhSTEM): Real-time MQTT sensor monitoring and configurable watering. \resumelink{https://github.com/HCMUT-Archived/IoIoT-BE}{github.com/HCMUT-Archived/IoIoT-BE}
+    \item \textbf{Whack-a-Mole Game Engine Demo} (Python, Pygame): Component-based engine with scenes, global events, and custom UI. \resumelink{https://github.com/HCMUT-Archived/Hammer-vs.-Zombies}{github.com/HCMUT-Archived/Hammer-vs.-Zombies}
+    \item \textbf{HCMUT Remote Printing Service} (Express.js, MongoDB, JWT, VNPay): Remote printing with printer management and online payments. \resumelink{https://github.com/HCMUT-Archived/SSPS-BE}{github.com/HCMUT-Archived/SSPS-BE}
+\end{resumeitems}
+
+\section{Certifications}
+
+\textbf{TOEIC Listening and Reading:} 990/990 \enspace|\enspace \textbf{Axon Active:} Certificate in Software Development with Scrum Training
 
 \end{document}
