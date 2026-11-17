@@ -149,7 +149,7 @@
 
 \begin{resumeitems}
     \item Led backend development of a community-driven, all-in-one IELTS/TOEIC practice platform, split into NestJS gRPC services behind one gateway with a database per service, so each scales independently.
-    \item Improved fault tolerance and data consistency across services with a shared RabbitMQ messaging layer (transactional outbox, inbox with idempotency keys, dead-letter queues), so events are never lost or applied twice.
+    \item Improved fault tolerance and data consistency across services with a shared RabbitMQ messaging layer (transactional outbox, inbox with idempotency keys, exponential-backoff retries, dead-letter queues), so events are never lost or applied twice.
     \item Restricted token signing to the auth service with RS256 so other services can only verify; added refresh-token rotation with reuse detection and Redis-backed revocation, so a stolen token or password change ends the affected sessions.
     \item Optimized queries on nested data (exam sections, tag hierarchies, comment threads) with closure tables, nested sets and materialized paths, loading each tree in one query instead of recursive lookups; added optimistic locking against lost updates.
     \item Scaled Socket.IO chat across instances with Redis pub/sub and moved AI Writing scoring onto RabbitMQ, so essay submissions return instantly while the AI grades them in the background.
