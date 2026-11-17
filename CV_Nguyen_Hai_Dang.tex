@@ -130,10 +130,10 @@
     {Ho Chi Minh City, Vietnam}
 \techstack{NestJS, MongoDB, Mongoose, Redis, BullMQ, Server-Sent Events (SSE)}
 \begin{resumeitems}
-    \item Built mobile-facing REST APIs for account, post, comment, reaction, connection, group, and notification features for a sports community platform using a modular monolith and layered MVC architecture.
-    \item Implemented real-time notifications using Server-Sent Events (SSE) for live user updates.
+    \item Worked on mobile-facing REST APIs for account, post, comment, reaction, connection, group, and notification features for a sports community platform using a modular monolith and layered MVC architecture.
+    \item Reduced live notification overhead by choosing Server-Sent Events (SSE) over WebSockets, a lighter fit for one-way updates.
     \item Implemented passwordless OTP authentication and Redis-backed JWT revocation.
-    \item Implemented asynchronous image processing with BullMQ and Sharp, an image processing library, generating optimized image variants and metadata for efficient mobile image loading.
+    \item Optimized mobile image loading by generating image variants and metadata in BullMQ job workers with Sharp, an image processing library.
 \end{resumeitems}
 
 \section{Projects}
@@ -141,19 +141,21 @@
 \projectentry
     {AI-Assisted English-Learning Platform}
     {October 2025 -- May 2026}
-    {Full-Stack Developer and Backend Lead, team of 4 \enspace|\enspace
-    Backend: \resumelink{https://github.com/HDkit/meowlish}{github.com/HDkit/meowlish}
+    {Backend Lead, Full-Stack Developer, team of 4 \enspace|\enspace
+    GitHub: \resumelink{https://github.com/HDkit/meowlish}{HDkit/meowlish}
     \enspace|\enspace
-    Frontend: \resumelink{https://github.com/HDkit/meowlish-fe}{github.com/HDkit/meowlish-fe}}
-\techstack{NestJS, PostgreSQL, Prisma, Redis, RabbitMQ, BullMQ, gRPC, MinIO, Envoy, Socket.IO, React, Tailwind CSS}
+    \resumelink{https://github.com/HDkit/meowlish-fe}{HDkit/meowlish-fe}}
+\techstack{NestJS, gRPC, RabbitMQ, PostgreSQL, Prisma, Redis, BullMQ, Socket.IO, MinIO, OpenTelemetry, Next.js}
 
 \begin{resumeitems}
-    \item Led backend development for NestJS microservices in an Nx/pnpm monorepo, applying lightweight domain-driven design, CQRS, and event-driven architecture.
-    \item Designed an HTTP gateway for client communication, using gRPC and RabbitMQ for inter-service communication and Envoy proxy sidecars alongside services; implemented rate limiting and load balancing for traffic control and resilience.
-    \item Developed email and Google OAuth authentication, refresh tokens, account lockout, RS256 JWT signing, gateway verification, RBAC, ownership checks, and immediate Redis-backed token revocation.
-    \item Built RabbitMQ workflows for notifications, achievements, chat, and file processing; delivered real-time updates through SSE and horizontally scalable Socket.IO chat using Redis pub/sub.
-    \item Designed PostgreSQL and Prisma models using optimistic locking, closure tables, and nested sets; added full-text search, automatic transaction management, presigned MinIO uploads, and BullMQ cleanup workers.
-    \item Delivered dashboards, exam creation with AI-assisted scoring, study goals, achievements, blogs, and flashcards for learners and admins.
+    \item Led backend development of a community-driven, all-in-one IELTS/TOEIC practice platform, split into NestJS gRPC services behind one gateway with a database per service, so each scales independently.
+    \item Improved fault tolerance and data consistency across services with a shared RabbitMQ messaging layer (transactional outbox, inbox with idempotency keys, dead-letter queues), so events are never lost or applied twice.
+    \item Restricted token signing to the auth service with RS256 so other services can only verify; added refresh-token rotation with reuse detection and Redis-backed revocation, so a stolen token or password change ends the affected sessions.
+    \item Optimized queries on nested data (exam sections, tag hierarchies, comment threads) with closure tables, nested sets and materialized paths, loading each tree in one query instead of recursive lookups; added optimistic locking against lost updates.
+    \item Scaled Socket.IO chat across instances with Redis pub/sub and moved AI Writing scoring onto RabbitMQ, so essay submissions return instantly while the AI grades them in the background.
+    \item Sped up builds by migrating the services to an Nx monorepo with cached, dependency-aware builds, and fixed cross-platform build issues (SWC, the RabbitMQ library) so the team could develop on both Windows and Linux.
+    \item Deployed on a private server with Docker Compose and GitHub Actions CI, plus OpenTelemetry and Grafana alerting.
+    \item Worked on and directed most of the Next.js frontend features, verifying each one through end-to-end user flow testing.
 \end{resumeitems}
 
 \projectseparator
@@ -161,10 +163,10 @@
 \projectentry
     {BKMarket E-Commerce Platform}
     {October 2024 -- January 2025}
-    {Project Lead and Full-Stack Developer, team of 4 \enspace|\enspace
-    Backend: \resumelink{https://github.com/HCMUT-Archived/BKMarket-BE}{github.com/HCMUT-Archived/BKMarket-BE}
+    {Project Lead, Full-Stack Developer, team of 4 \enspace|\enspace
+    GitHub: \resumelink{https://github.com/HCMUT-Archived/BKMarket-BE}{HCMUT-Archived/BKMarket-BE}
     \enspace|\enspace
-    Frontend: \resumelink{https://github.com/HCMUT-Archived/BKMarket-FE}{github.com/HCMUT-Archived/BKMarket-FE}}
+    \resumelink{https://github.com/HCMUT-Archived/BKMarket-FE}{HCMUT-Archived/BKMarket-FE}}
 \techstack{Express.js, Node.js, React, MongoDB, Mongoose, VNPay}
 
 \begin{resumeitems}
@@ -176,9 +178,9 @@
 \section{Additional Projects}
 
 \begin{resumeitems}
-    \item \textbf{Smart Watering IoT System} (NestJS, PostgreSQL, MQTT, OhSTEM): Real-time MQTT sensor monitoring and configurable watering. \resumelink{https://github.com/HCMUT-Archived/IoIoT-BE}{github.com/HCMUT-Archived/IoIoT-BE}
+    \item \textbf{Smart Watering IoT System} (NestJS, PostgreSQL, MQTT, OhSTEM): Automated plant watering system that monitors humidity and light sensors over MQTT, with configurable watering schedules. \resumelink{https://github.com/HCMUT-Archived/IoIoT-BE}{github.com/HCMUT-Archived/IoIoT-BE}
     \item \textbf{Whack-a-Mole Game Engine Demo} (Python, Pygame): Component-based engine with scenes, global events, and custom UI. \resumelink{https://github.com/HCMUT-Archived/Hammer-vs.-Zombies}{github.com/HCMUT-Archived/Hammer-vs.-Zombies}
-    \item \textbf{HCMUT Remote Printing Service} (Express.js, MongoDB, JWT, VNPay): Remote printing with printer management and online payments. \resumelink{https://github.com/HCMUT-Archived/SSPS-BE}{github.com/HCMUT-Archived/SSPS-BE}
+    \item \textbf{HCMUT Campus Printing Service} (Express.js, MongoDB, JWT, VNPay): Student self-service printing with in-app print configuration and online payment, plus a staff dashboard for printers, logs and revenue. \resumelink{https://github.com/HCMUT-Archived/SSPS-BE}{github.com/HCMUT-Archived/SSPS-BE}
 \end{resumeitems}
 
 \end{document}
